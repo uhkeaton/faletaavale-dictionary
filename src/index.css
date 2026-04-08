@@ -1,15 +1,82 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
 :root {
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-
+.legibility {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+:root {
+  --visible-light: block;
+  --visible-dark: none;
+  --text-secondary: #606060;
+
+  /* borders */
+  --line: #0000001f;
+
+  /* backgrounds */
+  --bg-base: #fff;
+  --bg-nav: rgb(248, 250, 253);
+  --bg-secondary: rgb(245, 245, 245);
+}
+
+:root[data-theme="dark"] {
+  --visible-light: none;
+  --visible-dark: block;
+  --text-secondary: #aaaaaa;
+
+  /* borders */
+  --line: oklab(0.556 0 0 / 0.2);
+
+  /* backgrounds */
+  --bg-base: #1a1a1a;
+  --bg-nav: rgb(30, 31, 32);
+  --bg-secondary: rgb(59, 59, 59);
+}
+
+.prose-auto {
+  @apply prose;
+}
+
+:root[data-theme="dark"] {
+  .prose-auto {
+    @apply prose prose-invert;
   }
+}
+
+.visible-light {
+  display: var(--visible-light);
+}
+.visible-dark {
+  display: var(--visible-dark);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.lexend-400 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lexend-500 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.lexend-600 {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
 }
