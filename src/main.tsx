@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeWrapper } from "./Theme.tsx";
 import { Embed } from "./Embed.tsx";
+import { Home } from "./Home.tsx";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +19,7 @@ createRoot(document.getElementById("root")!).render(
           <ThemeWrapper>
             <Routes>
               <Route path="/" element={<App />}>
-                <Route index element={<div>Home</div>} />
+                <Route index element={<Home />} />
                 <Route path="/embed" element={<Embed />} />
               </Route>
             </Routes>

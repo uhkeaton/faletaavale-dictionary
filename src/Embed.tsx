@@ -1,3 +1,8 @@
+import { useGlobal } from "./useGlobal";
+
 export function Embed() {
-  return <div>Embed</div>;
+  const { wordsQuery } = useGlobal();
+  return <div>{JSON.stringify(wordsQuery.data?.words)}</div>;
 }
+
+
