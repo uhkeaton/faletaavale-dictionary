@@ -2,13 +2,14 @@ import React, { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router";
 import type { Orthography, ThemeMode } from "./url";
 import { useQuery } from "@tanstack/react-query";
+import { fetchWords, type Dictionary } from "./api";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
 function useGlobalContext() {
-  const wordsQuery = useQuery({
+  const wordsQuery = useQuery<Dictionary>({
     queryKey: ["words"],
-    queryFn: () => ({ words: [] }),
+    queryFn: fetchWords,
   });
 
   const [query, setQuery] = useState("");

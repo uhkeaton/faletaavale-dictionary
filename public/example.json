@@ -1,0 +1,17 @@
+{
+  "words": [
+    {
+      "hw": "moana",
+      "entries": [{ "pos": "n.", "defs": [{ "text": "ocean" }] }]
+    },
+    {
+      "hw": "aloha",
+      "entries": [{ "pos": "n.", "defs": [{ "text": "hello" }] }]
+    },
+    {
+      "hw": "nui",
+      "entries": [{ "pos": "adj.", "defs": [{ "text": "big" }] }]
+    }
+  ],
+  "attributionMarkdown": "This is an example."
+}
