@@ -25,10 +25,7 @@
   --bg-base: #fff;
   --bg-primary: #fff;
   --bg-secondary: rgb(245, 245, 245);
-<<<<<<< HEAD
   --bg-backdrop: transparent;
-=======
->>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 }
 
 :root[data-theme="dark"] {
@@ -44,10 +41,7 @@
   --bg-base: #1a1a1a;
   --bg-primary: rgb(42, 42, 42);
   --bg-secondary: #1a1a1a;
-<<<<<<< HEAD
   --bg-backdrop: rgba(0, 0, 0, 0.5);
-=======
->>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 }
 
 .prose-auto {
@@ -96,7 +90,7 @@
   inset: 0;
   height: 100vh;
   width: 100%;
-  background-image: url("/talo.jpg");
+  background-image: url("https://pub-04fc8b0f269346dc866259c95ea2ff25.r2.dev/talo-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

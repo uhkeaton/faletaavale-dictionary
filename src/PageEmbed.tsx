@@ -4,22 +4,13 @@ import { IconArrowBack } from "./BackButton";
 import { useState } from "react";
 import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
-<<<<<<< HEAD
 import { useParentListener } from "./useParentListener";
 import { AutocompleteSearch } from "./AutocompleteSearch";
-=======
-import { EmbedSearchBar } from "./EmbedSearchBar";
-import { useParentListener } from "./useParentListener";
->>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 
 export function PageEmbed() {
   useParentListener();
   const [showInfo, setShowInfo] = useState(false);
-<<<<<<< HEAD
   const { query, wordsQuery, wordIndex } = useGlobal();
-=======
-  const { query, setQuery, wordsQuery, wordIndex } = useGlobal();
->>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 
   const results = wordIndex.get(query);
 
