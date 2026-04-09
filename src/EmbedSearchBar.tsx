@@ -2,7 +2,7 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import { IconSearch } from "./IconSearch";
 
-export function SearchBar({
+export function EmbedSearchBar({
   value,
   onChange,
 }: {
@@ -10,7 +10,7 @@ export function SearchBar({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="border rounded-full border-(--line) flex items-center py-0.5 px-1 bg-(--bg-primary) drop-shadow-xl/2">
+    <div className="border rounded-full border-(--line) flex items-center py-0.5 px-1 bg-(--bg-base) drop-shadow-xl/2">
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
         <IconSearch className="w-6" />
       </IconButton>

@@ -9,11 +9,13 @@ export const EntrySchema = z.object({
   pos: z.string(),
   defs: z.array(DefinitionSchema),
 });
+export type Entry = z.infer<typeof EntrySchema>;
 
 export const WordSchema = z.object({
   hw: z.string(),
   entries: z.array(EntrySchema),
 });
+export type Word = z.infer<typeof WordSchema>;
 
 export const DictionarySchema = z.object({
   words: z.array(WordSchema),
