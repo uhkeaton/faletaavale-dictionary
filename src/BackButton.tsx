@@ -29,11 +29,7 @@ export function BackButton({
       to={`${to}${location.search}`}
     >
       <IconArrowBack className="w-8" />
-      {text && (
-        <div className="lexend-500 text-2xl">
-          {text}
-        </div>
-      )}
+      {text && <div className="lexend-500 text-2xl">{text}</div>}
     </Link>
   );
 }

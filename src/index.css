@@ -25,7 +25,10 @@
   --bg-base: #fff;
   --bg-primary: #fff;
   --bg-secondary: rgb(245, 245, 245);
+<<<<<<< HEAD
   --bg-backdrop: transparent;
+=======
+>>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 }
 
 :root[data-theme="dark"] {
@@ -41,7 +44,10 @@
   --bg-base: #1a1a1a;
   --bg-primary: rgb(42, 42, 42);
   --bg-secondary: #1a1a1a;
+<<<<<<< HEAD
   --bg-backdrop: rgba(0, 0, 0, 0.5);
+=======
+>>>>>>> 85dc8a53493832ac97549e9d86d1c9f45ec9f490
 }
 
 .prose-auto {
