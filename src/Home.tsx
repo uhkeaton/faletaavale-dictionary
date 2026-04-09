@@ -5,7 +5,7 @@ export function Home() {
   return (
     <div className="flex justify-between w-full">
       <div className="p-4 text-blue-500 underline">
-        <Link to="/embed">/embed</Link>
+        <Link to="/search">/search</Link>
       </div>
       <div className="p-4">
         <ThemeButton />
