@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
 import { ThemeButton } from "./ThemeButton";
-import talo from "/talo.svg";
+import talo from "/talo-sm.png";
 import { IconImportContacts } from "./IconImportContacts";
 import { IconSearch } from "./IconSearch";
 import { IconInfo } from "./IconInfo";
@@ -21,19 +21,19 @@ export function PageHome() {
           </div>
         </div>
         <div className="p-4">
-          <div className="p-4 text-blue-500 hover:text-blue-700 underline text-2xl">
+          <div className="p-4 text-(--text-hl) underline text-2xl">
             <Link className="flex gap-2" to={`/search${location.search}`}>
               <IconSearch className="w-8" />
               search
             </Link>
           </div>
-          <div className="p-4 text-blue-500 hover:text-blue-700 underline text-2xl">
+          <div className="p-4 text-(--text-hl) underline text-2xl">
             <Link className="flex gap-2" to={`/list${location.search}`}>
               <IconImportContacts className="w-8" />
               list
             </Link>
           </div>
-          <div className="p-4 text-blue-500 hover:text-blue-700 underline text-2xl">
+          <div className="p-4 text-(--text-hl) underline text-2xl">
             <Link className="flex gap-2" to={`/info${location.search}`}>
               <IconInfo className="w-8" />
               info

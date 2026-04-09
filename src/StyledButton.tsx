@@ -12,7 +12,7 @@ export function StyledButton({
   return (
     <button
       className={cx(
-        "rounded-full relative flex justify-center items-center cursor-pointer",
+        "opacity-60 hover:opacity-100 rounded-full relative flex justify-center items-center cursor-pointer",
         {
           "max-w-12 min-w-12 min-h-12 max-h-12": size != "sm",
           "max-w-10 min-w-10 min-h-10 max-h-10": size == "sm",
