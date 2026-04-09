@@ -7,8 +7,10 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeWrapper } from "./Theme.tsx";
 import { PageSearch } from "./PageSearch.tsx";
-import { Home } from "./Home.tsx";
+import { PageHome } from "./PageHome.tsx";
 import { PageInfo } from "./PageInfo.tsx";
+import { PageList } from "./PageList.tsx";
+import { PageEmbed } from "./PageEmbed.tsx";
 
 const queryClient = new QueryClient();
 
@@ -20,9 +22,11 @@ createRoot(document.getElementById("root")!).render(
           <ThemeWrapper>
             <Routes>
               <Route path="/" element={<App />}>
-                <Route index element={<Home />} />
+                <Route index element={<PageHome />} />
                 <Route path="/search" element={<PageSearch />} />
+                <Route path="/list" element={<PageList />} />
                 <Route path="/info" element={<PageInfo />} />
+                <Route path="/embed" element={<PageEmbed />} />
               </Route>
             </Routes>
           </ThemeWrapper>
