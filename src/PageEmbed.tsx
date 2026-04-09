@@ -5,8 +5,10 @@ import { useState } from "react";
 import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
 import { EmbedSearchBar } from "./EmbedSearchBar";
+import { useParentListener } from "./useParentListener";
 
 export function PageEmbed() {
+  useParentListener();
   const [showInfo, setShowInfo] = useState(false);
   const { query, setQuery, wordsQuery, wordIndex } = useGlobal();
 
