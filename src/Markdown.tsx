@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 export function Markdown({ markdown }: { markdown: string }) {
   return (
     <>
-      <div className="prose-auto">
+      <div className="prose-auto break-words">
         <ReactMarkdown
           components={{
             img: ({ ...props }) => <img {...props} className="rounded-lg" />,

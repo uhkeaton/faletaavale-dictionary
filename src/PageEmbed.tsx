@@ -11,9 +11,7 @@ import { ResultCount } from "./ResultCount";
 export function PageEmbed() {
   useParentListener();
   const [showInfo, setShowInfo] = useState(false);
-  const { query, wordsQuery, wordIndex } = useGlobal();
-
-  const results = wordIndex.get(query);
+  const { wordsQuery, results } = useGlobal();
 
   if (showInfo) {
     return (

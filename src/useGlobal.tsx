@@ -3,8 +3,13 @@ import { useSearchParams } from "react-router";
 import type { Orthography, ThemeMode } from "./url";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWords, type Dictionary, type Word } from "./api";
+import { removeDiacritics } from "./orthography";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
+
+function toIdx(str: string) {
+  return removeDiacritics(str).toLowerCase();
+}
 
 function useGlobalContext() {
   const wordsQuery = useQuery<Dictionary>({
@@ -20,7 +25,7 @@ function useGlobalContext() {
     const words = wordsQuery?.data?.words ?? [];
 
     for (const word of words) {
-      const key = word.hw;
+      const key = toIdx(word.hw);
 
       if (!index.has(key)) {
         index.set(key, []);
@@ -31,6 +36,8 @@ function useGlobalContext() {
 
     return index;
   }, [wordsQuery?.data]);
+
+  const results = wordIndex.get(toIdx(query));
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -61,7 +68,7 @@ function useGlobalContext() {
     query,
     setQuery,
     wordsQuery,
-    wordIndex,
+    results,
   };
 }
 

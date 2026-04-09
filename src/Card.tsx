@@ -7,7 +7,7 @@ export function WordCard({ word }: { word: Word }) {
   const { orthography } = useGlobal();
 
   return (
-    <div className="p-4">
+    <div className="p-3">
       <div className="mb-2 flex flex-wrap items-end gap-x-2">
         <div className={"align-baseline lexend-500 text-2xl"}>
           {orthography === Orthography.unmarked
@@ -32,7 +32,7 @@ export function WordCard({ word }: { word: Word }) {
 export function Entry({ entry }: { entry: Entry }) {
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex gap-2 mb-2">
         <div className="text-neutral-400">{entry.pos}</div>
         <div className="flex-1 text-lg opacity-75">
           {entry.defs.map((def) => {

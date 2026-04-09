@@ -7,8 +7,7 @@ import { Hero } from "./Hero";
 import { ResultCount } from "./ResultCount";
 
 export function PageSearch() {
-  const { query, wordIndex } = useGlobal();
-  const results = wordIndex.get(query);
+  const { results } = useGlobal();
   return (
     <Hero>
       <div className="min-h-dvh">
