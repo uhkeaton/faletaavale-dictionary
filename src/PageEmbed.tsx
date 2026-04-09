@@ -4,13 +4,13 @@ import { IconArrowBack } from "./BackButton";
 import { useState } from "react";
 import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
-import { EmbedSearchBar } from "./EmbedSearchBar";
 import { useParentListener } from "./useParentListener";
+import { AutocompleteSearch } from "./AutocompleteSearch";
 
 export function PageEmbed() {
   useParentListener();
   const [showInfo, setShowInfo] = useState(false);
-  const { query, setQuery, wordsQuery, wordIndex } = useGlobal();
+  const { query, wordsQuery, wordIndex } = useGlobal();
 
   const results = wordIndex.get(query);
 
@@ -41,12 +41,7 @@ export function PageEmbed() {
       <div className="p-4 sticky top-0 w-full bg-(--bg-base) z-90 border-b border-(--line)">
         <div className="flex gap-4 items-center">
           <div className="flex-1">
-            <EmbedSearchBar
-              value={query}
-              onChange={(val) => {
-                setQuery(val);
-              }}
-            />
+            <AutocompleteSearch />
           </div>
           <div
             className="opacity-50 hover:opacity-100 cursor-pointer"

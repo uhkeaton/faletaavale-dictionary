@@ -30,7 +30,7 @@ export function BackButton({
     >
       <IconArrowBack className="w-8" />
       {text && (
-        <div className="lexend-500 text-2xl opacity-50 group-hover:opacity-100">
+        <div className="lexend-500 text-2xl">
           {text}
         </div>
       )}

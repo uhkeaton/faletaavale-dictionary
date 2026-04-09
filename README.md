@@ -1,3 +1,5 @@
-# React + TypeScript + Vite
+# Moana Dictionary
 
-Photo: [Mt. Alava Trail – Aualasopo i Alava](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) Credit: Keaton Williamson
+![Mt. Alava Trail – Aualasopo i Alava](/public/talo.jpg)
+
+Photo: [Mt. Alava Trail – Aualasopo i Alava](https://www.nps.gov/npsa/planyourvisit/mt-alava-trail-aualasopo-i-alava.htm) Credit: Keaton Williamson
