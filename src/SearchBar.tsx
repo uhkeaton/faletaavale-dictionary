@@ -1,30 +1,56 @@
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
 import { IconSearch } from "./IconSearch";
+import { InputAdornment, TextField } from "@mui/material";
+import Autocomplete from "@mui/material/Autocomplete";
+import { useGlobal } from "./useGlobal";
+import { useMemo } from "react";
 
-export function SearchBar({
-  value,
-  onChange,
-}: {
-  value: string;
-  onChange: (value: string) => void;
-}) {
+export function AutocompleteSearch() {
+  const { query, setQuery, wordsQuery } = useGlobal();
+
+  const autocompleteOptions = useMemo(() => {
+    return wordsQuery?.data.words?.map((i) => ({ title: i.hw }));
+  }, [wordsQuery?.data]);
+
   return (
-    <div className="border rounded-full border-(--line) flex items-center py-0.5 px-1 bg-(--bg-primary) drop-shadow-xl/2">
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-        <IconSearch className="w-6" />
-      </IconButton>
-      <InputBase
-        value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
-        }}
-        sx={{ ml: 1, flex: 1 }}
-        placeholder={"Search"}
-        inputProps={{
-          "aria-label": "Search",
-        }}
-      />
-    </div>
+    <Autocomplete
+      value={query}
+      onChange={(_, newValue: { title: string } | null) => {
+        setQuery(newValue.title);
+      }}
+      freeSolo
+      options={autocompleteOptions}
+      disableClearable
+      renderInput={(params) => {
+        return (
+          <TextField
+            {...params}
+            slotProps={{
+              ...params.slotProps,
+              input: {
+                ...params.slotProps.input,
+                type: "search",
+                style: { borderRadius: "40px" },
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <IconSearch className="ml-1 w-8" />
+                  </InputAdornment>
+                ),
+              },
+            }}
+          />
+        );
+      }}
+      getOptionLabel={(option) =>
+        typeof option === "string" ? option : option.title
+      }
+      // this demo demonstrates how the value parameter can be either an object (same type as option) or a string
+      // it could become a string if, for example, you press "Enter" in the input field
+      isOptionEqualToValue={(option, value) => {
+        if (typeof value === "string") {
+          return option.title === value;
+        }
+        return option.title === value.title;
+      }}
+    />
   );
 }

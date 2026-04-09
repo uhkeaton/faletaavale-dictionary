@@ -16,6 +16,7 @@
   --visible-light: block;
   --visible-dark: none;
   --text-secondary: #606060;
+  --text-hl: #1976d2;
 
   /* borders */
   --line: #0000001f;
@@ -30,6 +31,7 @@
   --visible-light: none;
   --visible-dark: block;
   --text-secondary: #aaaaaa;
+  --text-hl: #29b6f6;
 
   /* borders */
   --line: oklab(0.556 0 0 / 0.2);

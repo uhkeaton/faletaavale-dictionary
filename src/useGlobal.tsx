@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useMemo, useState } from "react";
 import { useSearchParams } from "react-router";
 import type { Orthography, ThemeMode } from "./url";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWords, type Dictionary } from "./api";
+import { fetchWords, type Dictionary, type Word } from "./api";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
@@ -13,6 +13,24 @@ function useGlobalContext() {
   });
 
   const [query, setQuery] = useState("");
+
+  const wordIndex = useMemo(() => {
+    const index = new Map<string, Word[]>();
+
+    const words = wordsQuery?.data?.words ?? [];
+
+    for (const word of words) {
+      const key = word.hw;
+
+      if (!index.has(key)) {
+        index.set(key, []);
+      }
+
+      index.get(key)!.push(word);
+    }
+
+    return index;
+  }, [wordsQuery?.data]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -43,6 +61,7 @@ function useGlobalContext() {
     query,
     setQuery,
     wordsQuery,
+    wordIndex,
   };
 }
 

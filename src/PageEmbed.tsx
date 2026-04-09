@@ -1,33 +1,14 @@
 import { useGlobal } from "./useGlobal";
 import { WordCard } from "./Card";
 import { IconArrowBack } from "./BackButton";
-import { useMemo, useState } from "react";
-import type { Word } from "./api";
+import { useState } from "react";
 import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
 import { EmbedSearchBar } from "./EmbedSearchBar";
 
 export function PageEmbed() {
   const [showInfo, setShowInfo] = useState(false);
-  const { query, setQuery, wordsQuery } = useGlobal();
-
-  const wordIndex = useMemo(() => {
-    const index = new Map<string, Word[]>();
-
-    const words = wordsQuery?.data?.words ?? [];
-
-    for (const word of words) {
-      const key = word.hw;
-
-      if (!index.has(key)) {
-        index.set(key, []);
-      }
-
-      index.get(key)!.push(word);
-    }
-
-    return index;
-  }, [wordsQuery?.data]);
+  const { query, setQuery, wordsQuery, wordIndex } = useGlobal();
 
   const results = wordIndex.get(query);
 
