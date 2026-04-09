@@ -8,7 +8,7 @@ export function AutocompleteSearch() {
   const { query, setQuery, wordsQuery } = useGlobal();
 
   const autocompleteOptions = useMemo(() => {
-    return wordsQuery?.data.words?.map((i) => ({ title: i.hw }));
+    return wordsQuery?.data?.words?.map((i) => ({ title: i.hw }));
   }, [wordsQuery?.data]);
 
   return (

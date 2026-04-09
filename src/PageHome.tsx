@@ -21,24 +21,27 @@ export function PageHome() {
           </div>
         </div>
         <div className="p-4">
-          <div className="p-4 text-(--text-hl) underline text-2xl">
-            <Link className="flex gap-2" to={`/search${location.search}`}>
-              <IconSearch className="w-8" />
-              search
-            </Link>
-          </div>
-          <div className="p-4 text-(--text-hl) underline text-2xl">
-            <Link className="flex gap-2" to={`/list${location.search}`}>
-              <IconImportContacts className="w-8" />
-              list
-            </Link>
-          </div>
-          <div className="p-4 text-(--text-hl) underline text-2xl">
-            <Link className="flex gap-2" to={`/info${location.search}`}>
-              <IconInfo className="w-8" />
-              info
-            </Link>
-          </div>
+          <Link
+            className="rounded cursor-pointer hover:bg-neutral-300/20 p-4 text-(--text-hl) underline text-2xl flex gap-2"
+            to={`/search${location.search}`}
+          >
+            <IconSearch className="w-8" />
+            search
+          </Link>
+          <Link
+            className="rounded cursor-pointer hover:bg-neutral-300/20 p-4 text-(--text-hl) underline text-2xl flex gap-2"
+            to={`/list${location.search}`}
+          >
+            <IconImportContacts className="w-8" />
+            list
+          </Link>
+          <Link
+            className="rounded cursor-pointer hover:bg-neutral-300/20 p-4 text-(--text-hl) underline text-2xl flex gap-2"
+            to={`/info${location.search}`}
+          >
+            <IconInfo className="w-8" />
+            info
+          </Link>
         </div>
       </div>
     </div>
