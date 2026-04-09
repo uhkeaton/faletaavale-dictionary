@@ -8,14 +8,20 @@ export function AutocompleteSearch() {
   const { query, setQuery, wordsQuery } = useGlobal();
 
   const autocompleteOptions = useMemo(() => {
-    return wordsQuery?.data?.words?.map((i) => ({ title: i.hw }));
+    return (wordsQuery?.data?.words ?? [])?.map((i) => ({ title: i.hw }));
   }, [wordsQuery?.data]);
 
   return (
     <Autocomplete
       value={query}
-      onChange={(_, newValue: { title: string } | null) => {
-        setQuery(newValue.title);
+      onChange={(_, newValue) => {
+        if (typeof newValue === "string") {
+          setQuery(newValue);
+        } else if (newValue && typeof newValue === "object") {
+          setQuery(newValue.title);
+        } else {
+          setQuery("");
+        }
       }}
       freeSolo
       options={autocompleteOptions}
