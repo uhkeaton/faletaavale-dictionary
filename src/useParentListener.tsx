@@ -16,6 +16,11 @@ export function useParentListener() {
         setQuery(query);
       }
 
+      // notify parent window when the query finishes
+      // so the parent knows when to show the loaded UI
+      // (happening almost instantly in the current search implementation, so safe to call right away)
+      window.parent.postMessage({ type: "DICTIONARY_SUCCESS" }, "*");
+
       if (event.data?.type === "SET_THEME") {
         const theme = event.data.theme;
         setTheme(theme);

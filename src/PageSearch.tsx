@@ -4,6 +4,7 @@ import { WordCard } from "./Card";
 import { BackButton } from "./BackButton";
 import { ThemeButton } from "./ThemeButton";
 import { Hero } from "./Hero";
+import { ResultCount } from "./ResultCount";
 
 export function PageSearch() {
   const { query, wordIndex } = useGlobal();
@@ -21,7 +22,7 @@ export function PageSearch() {
               <ThemeButton />
             </div>
           </div>
-
+          <ResultCount />
           <div className="p-4">
             {results?.map((w) => {
               return <WordCard word={w} />;

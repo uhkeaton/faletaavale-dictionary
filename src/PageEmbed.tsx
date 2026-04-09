@@ -6,6 +6,7 @@ import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
 import { useParentListener } from "./useParentListener";
 import { AutocompleteSearch } from "./AutocompleteSearch";
+import { ResultCount } from "./ResultCount";
 
 export function PageEmbed() {
   useParentListener();
@@ -51,7 +52,7 @@ export function PageEmbed() {
           </div>
         </div>
       </div>
-
+      <ResultCount />
       <div className="p-4">
         {results?.map((w) => {
           return <WordCard word={w} />;
