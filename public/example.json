@@ -11,6 +11,10 @@
     {
       "hw": "nui",
       "entries": [{ "pos": "adj.", "defs": [{ "text": "big" }] }]
+    },
+    {
+      "hw": "faletaavale",
+      "entries": [{ "pos": "n.", "defs": [{ "text": "garage" }] }]
     }
   ],
   "attributionMarkdown": "This is an example."

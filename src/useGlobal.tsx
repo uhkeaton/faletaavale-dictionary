@@ -1,43 +1,41 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router";
 import type { Orthography, ThemeMode } from "./url";
 import { useQuery } from "@tanstack/react-query";
-import { fetchWords, type Dictionary, type Word } from "./api";
-import { removeDiacritics } from "./orthography";
+import {
+  buildSearchableDictionary,
+  type Dictionary,
+  type SearchableIndexes,
+} from "./api";
+import { MAX_GRAMS } from "./search";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
-function toIdx(str: string) {
-  return removeDiacritics(str).toLowerCase();
-}
-
 function useGlobalContext() {
-  const wordsQuery = useQuery<Dictionary>({
+  const wordsQuery = useQuery<Dictionary & SearchableIndexes>({
     queryKey: ["words"],
-    queryFn: fetchWords,
+    queryFn: buildSearchableDictionary,
   });
 
   const [query, setQuery] = useState("");
 
-  const wordIndex = useMemo(() => {
-    const index = new Map<string, Word[]>();
+  const wordIndexes = wordsQuery?.data?.wordIndexes ?? {};
+  const nGramIndexes = wordsQuery?.data?.nGramIndexes ?? {};
 
-    const words = wordsQuery?.data?.words ?? [];
+  const queriedIndexes = nGramIndexes[query.slice(0, MAX_GRAMS)] ?? [];
 
-    for (const word of words) {
-      const key = toIdx(word.hw);
+  // for words longer than 5 grams, or whatever the upper limit,
+  // make sure can directly get word with query as an index itself
+  if (!queriedIndexes.includes(query)) queriedIndexes.push(query);
 
-      if (!index.has(key)) {
-        index.set(key, []);
-      }
-
-      index.get(key)!.push(word);
-    }
-
-    return index;
-  }, [wordsQuery?.data]);
-
-  const results = wordIndex.get(toIdx(query));
+  const results = (queriedIndexes ?? [])
+    // sory by position of query in word
+    .sort((a, b) => a.indexOf(query) - b.indexOf(query))
+    .map((index) => {
+      return wordIndexes[index];
+    })
+    .filter(Boolean)
+    .flat();
 
   const [searchParams, setSearchParams] = useSearchParams();
 

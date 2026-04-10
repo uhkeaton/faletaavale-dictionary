@@ -1,11 +1,12 @@
 import { useGlobal } from "./useGlobal";
-import { AutocompleteSearch } from "./AutocompleteSearch";
+import { SimpleSearch } from "./SimpleSearch";
 import { WordCard } from "./Card";
 import { BackButton } from "./BackButton";
 import { ThemeButton } from "./ThemeButton";
 import { Hero } from "./Hero";
 import { ResultCount } from "./ResultCount";
 
+const MAX_RENDERED_RESULTS = 100;
 export function PageSearch() {
   const { results } = useGlobal();
   return (
@@ -16,16 +17,23 @@ export function PageSearch() {
             <div className="flex gap-4">
               <BackButton to="/" />
               <div className="flex-1">
-                <AutocompleteSearch />
+                <SimpleSearch />
               </div>
               <ThemeButton />
             </div>
           </div>
           <ResultCount />
           <div className="p-4">
-            {results?.map((w) => {
+            {results.slice(0, MAX_RENDERED_RESULTS).map((w) => {
               return <WordCard word={w} />;
             })}
+            {results.length > MAX_RENDERED_RESULTS && (
+              <div className="w-full p-4">
+                <div className="m-auto w-fit text-secondary">
+                  + {results.length - MAX_RENDERED_RESULTS} more results
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

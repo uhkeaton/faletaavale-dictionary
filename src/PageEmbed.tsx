@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Markdown } from "./Markdown";
 import { IconInfo } from "./IconInfo";
 import { useParentListener } from "./useParentListener";
-import { AutocompleteSearch } from "./AutocompleteSearch";
+import { SimpleSearch } from "./SimpleSearch";
 import { ResultCount } from "./ResultCount";
 
 export function PageEmbed() {
@@ -40,7 +40,7 @@ export function PageEmbed() {
       <div className="p-4 sticky top-0 w-full bg-(--bg-base) z-90 border-b border-(--line)">
         <div className="flex gap-4 items-center">
           <div className="flex-1">
-            <AutocompleteSearch />
+            <SimpleSearch />
           </div>
           <div
             className="opacity-50 hover:opacity-100 cursor-pointer"

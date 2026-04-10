@@ -26,6 +26,7 @@
   --bg-primary: #fff;
   --bg-secondary: rgb(245, 245, 245);
   --bg-backdrop: transparent;
+  --img-filter: brightness(1) contrast(1) saturate(1) hue-rotate(0deg);
 }
 
 :root[data-theme="dark"] {
@@ -42,6 +43,11 @@
   --bg-primary: rgb(42, 42, 42);
   --bg-secondary: #1a1a1a;
   --bg-backdrop: rgba(0, 0, 0, 0.5);
+  --img-filter: brightness(0.5) contrast(1.1) saturate(0.8) hue-rotate(10deg);
+}
+
+.night-filter {
+  filter: var(--img-filter);
 }
 
 .prose-auto {

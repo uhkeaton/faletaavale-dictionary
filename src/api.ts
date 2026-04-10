@@ -1,5 +1,6 @@
 import { viteDataUrl } from "./env";
 import { z } from "zod";
+import { buildNGramIndex, buildWordIndexes } from "./search";
 
 export const DefinitionSchema = z.object({
   text: z.string(),
@@ -24,7 +25,7 @@ export const DictionarySchema = z.object({
 
 export type Dictionary = z.infer<typeof DictionarySchema>;
 
-export async function fetchWords(): Promise<Dictionary> {
+export async function fetchDictionary(): Promise<Dictionary> {
   const res = await fetch(viteDataUrl);
   const data = await res.json();
 
@@ -36,4 +37,26 @@ export async function fetchWords(): Promise<Dictionary> {
   }
 
   return result.data;
+}
+
+export type SearchableIndexes = {
+  wordIndexes: Record<string, Word[]>;
+  nGramIndexes: Record<string, string[]>;
+};
+
+export async function buildSearchableDictionary(): Promise<
+  Dictionary & SearchableIndexes
+> {
+  const dictionary = await fetchDictionary();
+
+  const words = dictionary.words ?? [];
+  const wordIndexes = buildWordIndexes(words);
+  const nGramIndexes = buildNGramIndex(wordIndexes);
+
+  return {
+    words: words,
+    attributionMarkdown: dictionary.attributionMarkdown,
+    wordIndexes: wordIndexes,
+    nGramIndexes: nGramIndexes,
+  };
 }
