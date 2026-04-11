@@ -5,7 +5,7 @@ export function buildWordIndexes(words: Word[]): Record<string, Word[]> {
   const index = new Map<string, Word[]>();
 
   for (const word of words) {
-    const key = toIdx(word.hw);
+    const key = toIndex(word.hw);
 
     if (!index.has(key)) {
       index.set(key, []);
@@ -18,7 +18,7 @@ export function buildWordIndexes(words: Word[]): Record<string, Word[]> {
   return serializable;
 }
 
-export function toIdx(str: string) {
+export function toIndex(str: string) {
   return removeDiacritics(str).toLowerCase();
 }
 
@@ -50,7 +50,7 @@ export function buildNGramIndex(
 }
 
 function getNGrams(word: string, n = 3): string[] {
-  const normalized = toIdx(word);
+  const normalized = toIndex(word);
   const grams: string[] = [];
 
   for (let i = 0; i <= normalized.length - n; i++) {

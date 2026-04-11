@@ -36,5 +36,5 @@ export function useParentListener() {
     window.addEventListener("message", handleMessage);
 
     return () => window.removeEventListener("message", handleMessage);
-  }, []);
+  }, [setQuery, setTheme]);
 }

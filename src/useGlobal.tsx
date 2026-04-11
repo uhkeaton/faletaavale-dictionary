@@ -7,7 +7,7 @@ import {
   type Dictionary,
   type SearchableIndexes,
 } from "./api";
-import { MAX_GRAMS } from "./search";
+import { MAX_GRAMS, toIndex } from "./search";
 
 type GlobalContextType = ReturnType<typeof useGlobalContext>;
 
@@ -18,19 +18,20 @@ function useGlobalContext() {
   });
 
   const [query, setQuery] = useState("");
+  const q = toIndex(query);
 
   const wordIndexes = wordsQuery?.data?.wordIndexes ?? {};
   const nGramIndexes = wordsQuery?.data?.nGramIndexes ?? {};
 
-  const queriedIndexes = nGramIndexes[query.slice(0, MAX_GRAMS)] ?? [];
+  const queriedIndexes = nGramIndexes[q.slice(0, MAX_GRAMS)] ?? [];
 
   // for words longer than 5 grams, or whatever the upper limit,
   // make sure can directly get word with query as an index itself
-  if (!queriedIndexes.includes(query)) queriedIndexes.push(query);
+  if (!queriedIndexes.includes(q)) queriedIndexes.push(q);
 
   const results = (queriedIndexes ?? [])
     // sory by position of query in word
-    .sort((a, b) => a.indexOf(query) - b.indexOf(query))
+    .sort((a, b) => a.indexOf(q) - b.indexOf(q))
     .map((index) => {
       return wordIndexes[index];
     })

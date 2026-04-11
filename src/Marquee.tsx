@@ -39,7 +39,7 @@ export function Marquee() {
   }, [setPlaying]);
 
   return (
-    <div className="fixed bottom-0 left-0 w-full overflow-hidden">
+    <div className="fixed bottom-0 left-0 w-full overflow-hidden pointer-events-none">
       <div
         ref={containerRef}
         className={cx({ visible: playing })}

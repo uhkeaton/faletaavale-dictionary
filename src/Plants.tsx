@@ -12,7 +12,7 @@ export function Plants({
   )[];
 }) {
   return (
-    <div className="fixed bottom-0 left-0 w-full overflow-hidden">
+    <div className="fixed bottom-0 left-0 w-full overflow-hidden pointer-events-none">
       <div className="max-w-3xl m-auto flex justify-between items-end">
         {/* Left Side */}
         <div className="flex items-end pl-2">
@@ -103,3 +103,5 @@ export function Plants({
     </div>
   );
 }
+
+
