@@ -53,7 +53,7 @@ export function PageEmbed() {
       <ResultCount source="hw"/>
       <div className="p-4">
         {results?.map((w) => {
-          return <WordCard word={w} />;
+          return <WordCard word={w} highlight={false} />;
         })}
       </div>
     </div>

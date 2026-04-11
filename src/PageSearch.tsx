@@ -25,7 +25,7 @@ export function PageSearch() {
           <ResultCount source="hw" />
           <div className="p-4">
             {results.slice(0, MAX_RENDERED_RESULTS).map((w) => {
-              return <WordCard word={w} />;
+              return <WordCard word={w} highlight={false} />;
             })}
             {results.length > MAX_RENDERED_RESULTS && (
               <div className="w-full p-4">
@@ -39,7 +39,7 @@ export function PageSearch() {
           <ResultCount source="body" />
           <div className="p-4">
             {resultsEng.slice(0, MAX_RENDERED_RESULTS).map((w) => {
-              return <WordCard word={w} />;
+              return <WordCard word={w} highlight={true} />;
             })}
             {resultsEng.length > MAX_RENDERED_RESULTS && (
               <div className="w-full p-4">

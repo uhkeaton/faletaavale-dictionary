@@ -1,9 +1,16 @@
 import type { Entry, Word } from "./api";
+import { Highlighter } from "./Highlighter";
 import { makeUnmarked } from "./orthography";
 import { Orthography } from "./url";
 import { useGlobal } from "./useGlobal";
 
-export function WordCard({ word }: { word: Word }) {
+export function WordCard({
+  word,
+  highlight,
+}: {
+  word: Word;
+  highlight: boolean;
+}) {
   const { orthography } = useGlobal();
 
   return (
@@ -22,21 +29,33 @@ export function WordCard({ word }: { word: Word }) {
       </div>
       <div>
         {word.entries.map((e) => (
-          <Entry entry={e} />
+          <Entry entry={e} highlight={highlight} />
         ))}
       </div>
     </div>
   );
 }
 
-export function Entry({ entry }: { entry: Entry }) {
+export function Entry({
+  entry,
+  highlight,
+}: {
+  entry: Entry;
+  highlight: boolean;
+}) {
+  const { query } = useGlobal();
   return (
     <>
       <div className="flex gap-2 mb-2">
         <div className="text-neutral-400">{entry.pos}</div>
         <div className="flex-1 text-lg opacity-75">
           {entry.defs.map((def) => {
-            return <div>{def.text}</div>;
+            return (
+              <div>
+                {highlight && <Highlighter text={def.text} q={query} />}
+                {!highlight && <>{def.text}</>}
+              </div>
+            );
           })}
         </div>
       </div>

@@ -16,7 +16,7 @@ export function PageList() {
       </div>
       <div className="max-w-3xl m-auto p-4 bg-(--bg-primary)">
         {wordsQuery.data?.words?.map((w) => {
-          return <WordCard word={w} />;
+          return <WordCard word={w} highlight={false} />;
         })}
       </div>
     </Hero>
