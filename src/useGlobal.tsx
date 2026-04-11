@@ -31,7 +31,6 @@ function useGlobalContext() {
   // for words longer than 5 grams, or whatever the upper limit,
   // make sure can directly get word with query as an index itself
   if (!qIndexes.includes(q)) qIndexes.push(q);
-  if (!qEngIndexes.includes(q)) qEngIndexes.push(q);
 
   const results = (qIndexes ?? [])
     // sory by position of query in word
