@@ -14,7 +14,7 @@ export function Highlighter({ text, q }: { text: string; q: string }) {
     <span>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <span key={i} className="highlight">
+          <span key={i} className="hl-yellow">
             {part}
           </span>
         ) : (
