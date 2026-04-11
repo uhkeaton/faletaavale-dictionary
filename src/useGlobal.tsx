@@ -22,14 +22,27 @@ function useGlobalContext() {
 
   const wordIndexes = wordsQuery?.data?.wordIndexes ?? {};
   const nGramIndexes = wordsQuery?.data?.nGramIndexes ?? {};
+  const nGramEngIndexes = wordsQuery?.data?.nGramEngIndexes ?? {};
 
-  const queriedIndexes = nGramIndexes[q.slice(0, MAX_GRAMS)] ?? [];
+  // only consider first 5 letters of query
+  const qIndexes = nGramIndexes[q.slice(0, MAX_GRAMS)] ?? [];
+  const qEngIndexes = nGramEngIndexes[q.slice(0, MAX_GRAMS)] ?? [];
 
   // for words longer than 5 grams, or whatever the upper limit,
   // make sure can directly get word with query as an index itself
-  if (!queriedIndexes.includes(q)) queriedIndexes.push(q);
+  if (!qIndexes.includes(q)) qIndexes.push(q);
+  if (!qEngIndexes.includes(q)) qEngIndexes.push(q);
 
-  const results = (queriedIndexes ?? [])
+  const results = (qIndexes ?? [])
+    // sory by position of query in word
+    .sort((a, b) => a.indexOf(q) - b.indexOf(q))
+    .map((index) => {
+      return wordIndexes[index];
+    })
+    .filter(Boolean)
+    .flat();
+
+  const resultsEng = (qEngIndexes ?? [])
     // sory by position of query in word
     .sort((a, b) => a.indexOf(q) - b.indexOf(q))
     .map((index) => {
@@ -68,6 +81,7 @@ function useGlobalContext() {
     setQuery,
     wordsQuery,
     results,
+    resultsEng,
   };
 }
 

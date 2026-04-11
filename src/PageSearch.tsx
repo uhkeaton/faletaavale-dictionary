@@ -8,7 +8,7 @@ import { ResultCount } from "./ResultCount";
 
 const MAX_RENDERED_RESULTS = 100;
 export function PageSearch() {
-  const { results } = useGlobal();
+  const { results, resultsEng } = useGlobal();
   return (
     <Hero>
       <div className="min-h-dvh">
@@ -22,7 +22,7 @@ export function PageSearch() {
               <ThemeButton />
             </div>
           </div>
-          <ResultCount />
+          <ResultCount source="hw" />
           <div className="p-4">
             {results.slice(0, MAX_RENDERED_RESULTS).map((w) => {
               return <WordCard word={w} />;
@@ -31,6 +31,20 @@ export function PageSearch() {
               <div className="w-full p-4">
                 <div className="m-auto w-fit text-secondary">
                   + {results.length - MAX_RENDERED_RESULTS} more results
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="border-b border-(--line)"></div>
+          <ResultCount source="body" />
+          <div className="p-4">
+            {resultsEng.slice(0, MAX_RENDERED_RESULTS).map((w) => {
+              return <WordCard word={w} />;
+            })}
+            {resultsEng.length > MAX_RENDERED_RESULTS && (
+              <div className="w-full p-4">
+                <div className="m-auto w-fit text-secondary">
+                  + {resultsEng.length - MAX_RENDERED_RESULTS} more results
                 </div>
               </div>
             )}
