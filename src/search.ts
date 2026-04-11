@@ -55,7 +55,9 @@ export function buildNGramIndexes(
         index.set(gram, []);
       }
 
-      index.get(gram)!.push(key);
+      if (!index.get(gram)?.includes(key)) {
+        index.get(gram)!.push(key);
+      }
     }
   }
   const serializable = Object.fromEntries(index);
