@@ -91,7 +91,7 @@ Example .env
 VITE_DATA_URL=<the url where dictionary data is hosted>
 
 # the url of the parent application
-VITE_ALLOWED_PARENT_ORIGINS=["http://localhost:5174"]
+VITE_ALLOWED_PARENT_ORIGINS=["http://localhost:5174", "http://localhost:1822"]
 ```
 
 Example dictionary response:
